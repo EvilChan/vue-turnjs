@@ -1,0 +1,14 @@
+{
+    "singleQuote": false,
+    "semi": true,
+    "plugins": ["@trivago/prettier-plugin-sort-imports"],
+    "importOrder": [
+        "^node:*",
+        "^vite",
+        "^vue",
+        "<THIRD_PARTY_MODULES>",
+        "^@/(.*)$",
+        "^./(.*)$",
+        "^[./]"
+    ]
+}
