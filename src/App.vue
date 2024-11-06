@@ -21,12 +21,30 @@ const options = {
 };
 
 const pages = [
-    "https://raw.github.com/blasten/turn.js/master/demos/magazine/pages/01.jpg",
-    "https://raw.github.com/blasten/turn.js/master/demos/magazine/pages/02.jpg",
-    "https://raw.github.com/blasten/turn.js/master/demos/magazine/pages/03.jpg",
-    "https://raw.github.com/blasten/turn.js/master/demos/magazine/pages/04.jpg",
-    "https://raw.github.com/blasten/turn.js/master/demos/magazine/pages/05.jpg",
-    "https://raw.github.com/blasten/turn.js/master/demos/magazine/pages/06.jpg",
+    {
+        arr: [{ id: 1, title: "A" }],
+        img: "/01.jpg",
+    },
+    {
+        arr: [{ id: 1, title: "B" }],
+        img: "/02.jpg",
+    },
+    {
+        arr: [{ id: 2, title: "C" }],
+        img: "/03.jpg",
+    },
+    {
+        arr: [{ id: 3, title: "D" }],
+        img: "/04.jpg",
+    },
+    {
+        arr: [{ id: 4, title: "E" }],
+        img: "/05.jpg",
+    },
+    {
+        arr: [{ id: 5, title: "F" }],
+        img: "/06.jpg",
+    },
 ];
 
 const prev = () => {
@@ -43,7 +61,11 @@ const next = () => {
     <button @click="next">下一页</button>
     <Turn ref="turnRef" :options="options" class="magazine">
         <div v-for="(page, index) in pages" :key="index" class="page">
-            <img :src="page" alt="" />
+            <el-table :data="page.arr">
+                <el-table-column prop="id" label="ID" />
+                <el-table-column prop="title" label="Title" />
+            </el-table>
+            <img :src="page.img" alt="" />
         </div>
     </Turn>
 </template>
@@ -60,11 +82,13 @@ const next = () => {
 }
 
 .magazine .page {
+    display: flex;
+    flex-direction: column;
     height: 100%;
 }
 
 .magazine .page img {
+    flex: 1;
     max-width: 100%;
-    height: 100%;
 }
 </style>
